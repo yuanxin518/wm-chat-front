@@ -1,8 +1,13 @@
-interface IProps {
-  children: React.ReactNode;
-}
+import theme from "@/theme/themeConfig";
+import { Button, ConfigProvider } from "antd";
 
-export default function Home(props: IProps) {
-  const { children } = props;
-  return <div>213123{children}</div>;
+export default function Home() {
+  return (
+    <div>
+      <ConfigProvider theme={theme}>
+        <Button />
+        123
+      </ConfigProvider>
+    </div>
+  );
 }
