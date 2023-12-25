@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import StyledComponentsRegistry from "@/lib/AntdRegistry"
 import Container from "@/layouts/Container"
-import './globals.css'
+
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
