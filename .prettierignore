@@ -1,0 +1,7 @@
+build
+test
+public
+config
+!/*json
+!/*.yaml
+!/*rc
