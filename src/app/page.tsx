@@ -3,6 +3,7 @@ import theme from "@/theme/themeConfig"
 import { ConfigProvider, Input } from "antd"
 import "./index.scss"
 import MessageItem from "@/components/messageItem"
+import WebsocketListener from "@/components/websocketListener"
 
 const testMsg = [
 	{
@@ -26,23 +27,25 @@ const testMsg = [
 export default function Home() {
 	return (
 		<ConfigProvider theme={theme}>
-			<div className="home__main">
-				<div className="chat__pane">
-					<div className="chat__msg-container">
-						{testMsg.map((item) => (
-							<MessageItem {...item} key={item.id} />
-						))}
+			<WebsocketListener>
+				<div className="home__main">
+					<div className="chat__pane">
+						<div className="chat__msg-container">
+							{testMsg.map((item) => (
+								<MessageItem {...item} key={item.id} />
+							))}
+						</div>
+						<Input.TextArea
+							maxLength={9999}
+							showCount={false}
+							className="chat__input"
+							rows={4}
+							style={{ resize: "none" }}
+							onPressEnter={(e) => e.preventDefault()}
+						></Input.TextArea>
 					</div>
-					<Input.TextArea
-						maxLength={9999}
-						showCount={false}
-						className="chat__input"
-						rows={4}
-						style={{ resize: "none" }}
-						onPressEnter={(e) => e.preventDefault()}
-					></Input.TextArea>
 				</div>
-			</div>
+			</WebsocketListener>
 		</ConfigProvider>
 	)
 }
