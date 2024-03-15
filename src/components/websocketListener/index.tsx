@@ -11,7 +11,7 @@ enum EVENT_TYPE {
 type ResponseType = {
 	event: EVENT_TYPE
 	data: string
-	msg: string
+	message: string
 }
 
 interface IProps {

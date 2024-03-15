@@ -17,6 +17,7 @@
 	},
 	"dependencies": {
 		"@ant-design/cssinjs": "^1.18.1",
+		"@ant-design/icons": "^5.3.3",
 		"@ant-design/nextjs-registry": "^1.0.0",
 		"@douyinfe/semi-ui": "^2.48.0",
 		"antd": "^5.12.2",

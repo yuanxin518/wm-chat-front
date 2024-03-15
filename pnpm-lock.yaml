@@ -8,6 +8,9 @@ dependencies:
   '@ant-design/cssinjs':
     specifier: ^1.18.1
     version: 1.18.1(react-dom@18.2.0)(react@18.2.0)
+  '@ant-design/icons':
+    specifier: ^5.3.3
+    version: 5.3.3(react-dom@18.2.0)(react@18.2.0)
   '@ant-design/nextjs-registry':
     specifier: ^1.0.0
     version: 1.0.0(@ant-design/cssinjs@1.18.1)(antd@5.12.2)(next@14.0.4)(react-dom@18.2.0)(react@18.2.0)
@@ -96,8 +99,8 @@ packages:
     resolution: {integrity: sha512-vHbT+zJEVzllwP+CM+ul7reTEfBR0vgxFe7+lREAsAA7YGsYpboiq2sQNeQeRvh09GfQgs/GyFEvZpJ9cLXpXA==}
     dev: false
 
-  /@ant-design/icons@5.3.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-85zROTJCCApQn0Ee6L9561+Vd7yVKtSWNm2TpmOsYMrumchbzaRK83x1WWHv2VG+Y1ZAaKkDwcnnSPS/eSwNHA==}
+  /@ant-design/icons@5.3.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Zfci1s4f4+vfpVD6ksmmPuBv00SB/slpUAQlsBlMeRJdSleVVkgTUdlBM4j/vGzqYfMh2hF8/Poa1VSh542w0Q==}
     engines: {node: '>=8'}
     peerDependencies:
       react: '>=16.0.0'
@@ -941,7 +944,7 @@ packages:
     dependencies:
       '@ant-design/colors': 7.0.0
       '@ant-design/cssinjs': 1.18.1(react-dom@18.2.0)(react@18.2.0)
-      '@ant-design/icons': 5.3.1(react-dom@18.2.0)(react@18.2.0)
+      '@ant-design/icons': 5.3.3(react-dom@18.2.0)(react@18.2.0)
       '@ant-design/react-slick': 1.0.2(react@18.2.0)
       '@babel/runtime': 7.23.6
       '@ctrl/tinycolor': 3.6.1

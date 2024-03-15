@@ -1,11 +1,14 @@
 "use client"
 import React from "react"
-import { Form, Input, Button, notification } from "antd"
+import { Form, Input, Button, notification, Space } from "antd"
 import "./index.css"
 import url from "@/apis/url"
 import { useRouter } from "next/navigation"
+import Link from "antd/es/typography/Link"
 
 const LoginForm = () => {
+	const [isRegistry, setIsRegistry] = React.useState(false)
+
 	const router = useRouter()
 	const onFinish = async (
 		values: Record<"username" | "password", string>
@@ -17,7 +20,8 @@ const LoginForm = () => {
 		myHeaders.append("Content-Type", "application/json")
 		const body = JSON.stringify({
 			username,
-			password
+			password,
+			isRegistry
 		})
 
 		await fetch(url.LOGIN, {
@@ -27,7 +31,7 @@ const LoginForm = () => {
 		})
 			.then((res: any) => res.json())
 			.then((res) => {
-				if (res.code === 200) {
+				if (res.data.success) {
 					const token = res.data.access_token
 					if (token) {
 						localStorage.setItem("wm-token", token)
@@ -35,10 +39,15 @@ const LoginForm = () => {
 							message: "登录成功"
 						})
 						router.push("/")
+					} else {
+						setIsRegistry(false)
+						notification.success({
+							message: "注册成功"
+						})
 					}
 				} else {
 					notification.error({
-						message: `${res.message}`
+						message: `${res.data.message}`
 					})
 				}
 			})
@@ -47,7 +56,9 @@ const LoginForm = () => {
 	return (
 		<div className="login_container">
 			<div className="login_container__wrapper">
-				<div className="login_container__form-title">登录</div>
+				<div className="login_container__form-title">
+					{isRegistry ? "注册" : "登录"}
+				</div>
 				<Form
 					onFinish={onFinish}
 					className="login_container__form"
@@ -80,9 +91,18 @@ const LoginForm = () => {
 					</Form.Item>
 
 					<Form.Item>
-						<Button type="primary" htmlType="submit">
-							登录
-						</Button>
+						<Space>
+							<Button type="primary" htmlType="submit">
+								登录
+							</Button>
+							<Link
+								onClick={() => {
+									setIsRegistry(!isRegistry)
+								}}
+							>
+								{isRegistry ? "已有账号，直接登录" : "注册"}
+							</Link>
+						</Space>
 					</Form.Item>
 				</Form>
 			</div>

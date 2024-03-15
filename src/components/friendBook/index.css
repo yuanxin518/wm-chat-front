@@ -1,0 +1,10 @@
+.list_item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 12px 20px !important;
+    cursor: pointer;
+}
+
+.list_item:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
