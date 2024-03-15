@@ -47,7 +47,7 @@ const LoginForm = () => {
 					}
 				} else {
 					notification.error({
-						message: `${res.data.message}`
+						message: `${res.data.message || res.message}`
 					})
 				}
 			})

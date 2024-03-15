@@ -6,11 +6,11 @@ import { useRouter } from "next/navigation"
 const data = [
 	{
 		title: "john",
-		id: 1
+		id: "65f4ace7c98347508bb72a7b"
 	},
 	{
 		title: "maria",
-		id: 2
+		id: "65f4ace7c98347508bb72a7b"
 	}
 ]
 
