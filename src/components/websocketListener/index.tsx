@@ -1,5 +1,6 @@
 "use client"
 
+import { notification } from "antd"
 import { useRouter } from "next/navigation"
 import React, { useEffect, useState } from "react"
 
@@ -24,14 +25,17 @@ const WebsocketListener: React.FC<IProps> = ({ children }) => {
 	useEffect(() => {
 		setIsLoading(true)
 
-		localStorage.setItem(
-			"token",
-			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoibWFyaWEiLCJwYXNzd29yZCI6Imd1ZXNzIiwiaWF0IjoxNzEwMzIxMTI1LCJleHAiOjE3MTAzMjExODV9.Xs11pvVe21NvOu6ssqtrt3YvZAfuhtjIhwUBt8SB0GE"
+		const token = localStorage.getItem("wm-token")
+		const ws = new WebSocket(
+			"ws://localhost:81",
+			token ? [token || ""] : undefined
 		)
 
-		const ws = new WebSocket("ws://localhost:81", [
-			localStorage.getItem("token") || ""
-		])
+		ws.onerror = () => {
+			notification.error({
+				message: "服务器可能出现了异常"
+			})
+		}
 
 		ws.addEventListener("open", () => {
 			ws.send(

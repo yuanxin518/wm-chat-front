@@ -4,6 +4,10 @@ body {
     overflow: hidden;
 }
 
+body>div {
+    height: 100%;
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
