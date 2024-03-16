@@ -2,20 +2,37 @@
 import { Avatar, List, Tooltip, Typography } from "antd"
 import "./index.css"
 import { useRouter } from "next/navigation"
-
-const data = [
-	{
-		title: "john",
-		id: "65f4ace7c98347508bb72a7b"
-	},
-	{
-		title: "maria",
-		id: "65f4ace7c98347508bb72a7b"
-	}
-]
+import { useEffect, useState } from "react"
+import url from "@/apis/url"
 
 const FriendBook = () => {
 	const router = useRouter()
+	const [friends, setFriends] = useState<
+		{
+			userId: string
+			username: string
+		}[]
+	>([])
+
+	useEffect(() => {
+		const myHeaders = new Headers()
+		myHeaders.append("Content-Type", "application/json")
+		myHeaders.append(
+			"wm-chat-token",
+			localStorage.getItem("wm-token") || ""
+		)
+		fetch(url.FRIEND, {
+			method: "POST",
+			headers: myHeaders
+		})
+			.then((res) => res.json())
+			.then((res) => {
+				if (res.data && res.data.data) {
+					setFriends(res.data.data)
+				}
+			})
+	}, [])
+
 	return (
 		<List
 			style={{
@@ -23,12 +40,12 @@ const FriendBook = () => {
 				overflow: "auto"
 			}}
 			itemLayout="horizontal"
-			dataSource={data}
+			dataSource={friends}
 			renderItem={(item, index) => (
 				<List.Item
 					className="list_item"
 					onClick={() => {
-						router.push(`/?id=${item.id}`)
+						router.push(`/?id=${item.userId}`)
 					}}
 				>
 					<List.Item.Meta
@@ -40,7 +57,7 @@ const FriendBook = () => {
 						}
 						title={
 							<Typography.Text ellipsis>
-								{item.title}
+								{item.username}
 							</Typography.Text>
 						}
 						description={

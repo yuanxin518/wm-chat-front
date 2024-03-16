@@ -116,6 +116,13 @@ const WebsocketListener: React.FC<IProps> = ({ children }) => {
 				)
 			}
 		})
+
+		ws.current.addEventListener("close", () => {
+			notification.info({
+				message: "与服务器断开连接，请重新登录"
+			})
+			router.push("/login")
+		})
 	}, [router, wsContext, ws])
 
 	return (

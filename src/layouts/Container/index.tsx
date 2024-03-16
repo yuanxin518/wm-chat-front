@@ -29,19 +29,27 @@ const Container: React.FC<IProps> = (props) => {
 			) : (
 				<Layout>
 					<Sider
-						width={300}
+						width={200}
 						theme="light"
 						trigger={null}
-						collapsedWidth={200}
+						collapsedWidth={100}
 						collapsible
 						collapsed={collapsed}
 					>
 						<div className="demo-logo-vertical" />
 						<FriendBook />
 					</Sider>
-					<Layout>
+					<Layout
+						style={{
+							borderLeft: "1px solid rgba(0,0,0,0.1)"
+						}}
+					>
 						<Header
-							style={{ padding: 0, background: colorBgContainer }}
+							style={{
+								padding: 0,
+								background: colorBgContainer,
+								borderBottom: "1px solid rgba(0,0,0,0.1)"
+							}}
 						>
 							<Button
 								type="text"
